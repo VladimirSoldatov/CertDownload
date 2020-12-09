@@ -18,9 +18,8 @@ namespace Web_client
         {
             InitializeComponent();
  
-            get_crl(my_site);
-            get_crl(my_site2);
-            copy_files();
+
+  
 
 
 
@@ -49,12 +48,12 @@ namespace Web_client
             string answer2 = String.Empty; 
             try
             {
-                answer = web_Client.DownloadString(site);
+    
                 using (Stream data = web_Client.OpenRead(site))
                 {
                     using (StreamReader reader = new StreamReader(data))
                     {
-                        answer2 = reader.ReadToEnd();
+                        answer = reader.ReadToEnd();
                     }
                 }
             }
@@ -64,10 +63,6 @@ namespace Web_client
             }
      
 
-            if (answer.Contains("utf-8"))
-            {
-                answer = answer2;
-            }
 
             string buf = String.Empty;
 
@@ -118,6 +113,21 @@ namespace Web_client
                     //continue; ;
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            get_crl(my_site);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            copy_files();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            get_crl(my_site2);
         }
     }
 }
